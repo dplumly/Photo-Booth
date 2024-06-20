@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/* CSS Document */
+
+* { margin: 0; padding: 0; }
+body, html { height: 100%; }
+ul { list-style-type: none; }
+a { text-decoration: none; }
+
+h1, h2, h3, h4, h5, h6, p { color: #5a4d72; }
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+h4 { font-size: 1.12em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+p { font-size: .75em; }
+
+
+/*////////////////////////////////////////////////////////////////////*/
+.button-group, .filter-group {
+    margin: 50px auto;
+    display: table;
+    /* padding: 1em 1%; */
+}
+
+.play-area {
+    border: 1px solid grey;
+    padding: 1em 1%;
+    margin-bottom: 1em;
+}
+
+.button {
+    padding: 0.5em;
+    margin-right: 1em;
+}
+
+.play-area-sub {
+    width: 47%;
+    padding: 1em 1%;
+    display: inline-block;
+    text-align: center;
+}
+
+#capture {
+    display: none;
+}
+
+#snapshot {
+    display: inline-block;
+}
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+.grayscale-image {
+  filter: grayscale(100%);
+}
+
+.grayscale-video {
+  filter: grayscale(100%);
+}
+
+.sepia-image {
+filter: sepia(100%);
+}
+
+.sepia-video {
+filter: sepia(100%);
+}
