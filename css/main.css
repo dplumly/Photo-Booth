@@ -53,18 +53,19 @@ p { font-size: .75em; }
 
 
 /*////////////////////////////////////////////////////////////////////*/
-.grayscale-image {
+.grayscale-image, .grayscale-video  {
   filter: grayscale(100%);
 }
 
-.grayscale-video {
-  filter: grayscale(100%);
-}
-
-.sepia-image {
+.sepia-image, .sepia-video {
 filter: sepia(100%);
 }
 
-.sepia-video {
-filter: sepia(100%);
+.hue-rotate-image, .hue-rotate-video {
+  filter: hue-rotate(90deg);
 }
+
+.remove-filter-image, .remove-filter-video {
+  filter: none;
+}
+

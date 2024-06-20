@@ -22,16 +22,24 @@ btnCapture.addEventListener("click", captureSnapshot);
 
 //////////////////////////////////////////////////////////////////////
 // Buttons for effects
-const btnToggleGrayscale = document.getElementById("btn-toggle-grayscale"); // Button to toggle grayscale
-const btnToggleSepia = document.getElementById("btn-toggle-sepia"); // Button to toggle grayscale
+const btnToggleGrayscale = document.getElementById("btn-toggle-grayscale"); 
+const btnToggleSepia = document.getElementById("btn-toggle-sepia"); 
+const btnToggleHue = document.getElementById("btn-toggle-hue"); 
+const btnRemove = document.getElementById('btn-remove-filter');
+
 
 // Filter state
-let isGrayscale = false; // Flag to track grayscale state
-let isSepia = false; // Flag to track sepia state
+let isGrayscale = false; 
+let isSepia = false; 
+let isHue = false; 
+let remove = false;
+
 
 // Eventlisteners for effects
 btnToggleGrayscale.addEventListener("click", toggleGrayscale); 
 btnToggleSepia.addEventListener("click", toggleSepia); 
+btnToggleHue.addEventListener("click", toggleHue); 
+btnRemove.addEventListener('click', removeFilter);
 
 
 
@@ -80,6 +88,10 @@ function captureSnapshot() {
             ctx.filter = 'grayscale(100%)';
         } else if (isSepia) {
             ctx.filter = 'sepia(100%)';
+        } else if (isHue) {
+            ctx.filter = 'hue-rotate(90deg)';
+        } else if (remove) {
+            ctx.filter = 'none';
         } else {
             ctx.filter = 'none';
         }
@@ -98,12 +110,28 @@ function captureSnapshot() {
 function toggleGrayscale() {
     isGrayscale = !isGrayscale;
     isSepia = false; 
+    isHue = false; 
     updateStreamFilter();
 }
 
 function toggleSepia() {
     isSepia = !isSepia;
     isGrayscale = false; 
+    isHue = false; 
+    updateStreamFilter();
+}
+
+function toggleHue() {
+    isHue = !isHue;
+    isGrayscale = false; 
+    isSepia = false; 
+    updateStreamFilter();
+}
+
+function removeFilter() {
+    isGrayscale = false;
+    isSepia = false;
+    isHue = false;
     updateStreamFilter();
 }
 
@@ -113,12 +141,19 @@ function updateStreamFilter() {
     if (isGrayscale) {
         stream.classList.add('grayscale-video');
         stream.classList.remove('sepia-video');
+        stream.classList.remove('hue-rotate-video');
     } else if (isSepia) {
         stream.classList.add('sepia-video');
         stream.classList.remove('grayscale-video');
+        stream.classList.remove('hue-rotate-video');
+    } else if (isHue) {
+        stream.classList.add('hue-rotate-video');
+        stream.classList.remove('grayscale-video');
+        stream.classList.remove('sepia-video');
     } else {
         stream.classList.remove('grayscale-video');
         stream.classList.remove('sepia-video');
+        stream.classList.remove('hue-rotate-video');
     }
 }
 
